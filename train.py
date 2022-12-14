@@ -19,6 +19,11 @@ training_labels = []
 labels = []
 responses = []
 
+vocab_size = 1000
+embedding_dim = 16
+max_len = 20
+oov_token = "<OOV>"
+
 for intent in data['intents']:
     for pattern in intent['patterns']:
         training_sentences.append(pattern)
@@ -33,11 +38,6 @@ num_classes = len(labels)
 lbl_encoder = LabelEncoder()
 lbl_encoder.fit(training_labels)
 training_labels = lbl_encoder.transform(training_labels)
-
-vocab_size = 1000
-embedding_dim = 16
-max_len = 20
-oov_token = "<OOV>"
 
 tokenizer = Tokenizer(num_words=vocab_size, oov_token=oov_token)
 tokenizer.fit_on_texts(training_sentences)

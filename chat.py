@@ -10,6 +10,13 @@ from colorama import Fore, Style, Back
 import random
 import pickle
 
+from Model import Model
+
+model = Model(5000)
+
+model.train()
+model.save()
+
 with open("intents.json") as file:
     data = json.load(file)
 
