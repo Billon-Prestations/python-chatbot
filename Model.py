@@ -10,7 +10,6 @@ from sklearn.preprocessing import LabelEncoder
 import pickle
 
 class Model:
-    model = Sequential()
     vocab_size = 1000
     embedding_dim = 16
     max_len = 20
@@ -27,8 +26,31 @@ class Model:
     
     def __init__(self, epochs: int = 6000):
         self.epochs = epochs
+        
+    def loadModel(self, modelPath, tokenizerPath, labelEncodePath):
+        self.model = keras.models.load_model(modelPath)
+        
+        with open(tokenizerPath, 'rb') as handle:
+            self.tokenizer = pickle.load(handle)
+
+        # load label encoder object
+        with open(labelEncodePath, 'rb') as enc:
+            self.lbl_encoder = pickle.load(enc)
+            
+    def predict(self, input: str):
+        result = self.model.predict(
+            keras.preprocessing.sequence.pad_sequences(
+                self.tokenizer.texts_to_sequences([input]),
+                truncating='post', maxlen=self.max_len
+            )
+        )
+        
+        tag = self.lbl_encoder.inverse_transform([np.argmax(result)])
+        
+        return tag
 
     def initModel(self):
+        self.model = Sequential()
         self.model.add(Embedding(self.vocab_size, self.embedding_dim, input_length=self.max_len))
         self.model.add(GlobalAveragePooling1D())
         self.model.add(Dense(16, activation='relu'))
@@ -71,14 +93,14 @@ class Model:
 
         self.history = self.model.fit(self.padded_sequences, np.array(self.training_labels), epochs=self.epochs)
 
-    def save(self):
+    def save(self, modelPath, tokenizerPath, labelEncodePath):
         # to save the trained model
-        self.model.save("chat_model")
+        self.model.save(modelPath)
 
         # to save the fitted tokenizer
-        with open('tokenizer.pickle', 'wb') as handle:
+        with open(tokenizerPath, 'wb') as handle:
             pickle.dump(self.tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
             
         # to save the fitted label encoder
-        with open('label_encoder.pickle', 'wb') as ecn_file:
+        with open(labelEncodePath, 'wb') as ecn_file:
             pickle.dump(self.lbl_encoder, ecn_file, protocol=pickle.HIGHEST_PROTOCOL)

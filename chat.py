@@ -12,10 +12,10 @@ import pickle
 
 from Model import Model
 
-model = Model(5000)
+#model = Model(5000)
 
-model.train()
-model.save()
+#model.train()
+#model.save()
 
 with open("intents.json") as file:
     data = json.load(file)
