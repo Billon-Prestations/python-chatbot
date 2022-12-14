@@ -1,0 +1,45 @@
+{"intents": [
+    {"tag": "greeting",
+     "patterns": ["Hi", "Hey", "Is anyone there?", "Hello", "Hay", "Salut"],
+     "responses": ["Hello there", "Hi", "Salut", "Bonjour"]
+    },
+    {"tag": "goodbye",
+     "patterns": ["Bye", "See you later", "Goodbye", "quit", "exit", "Au revoir", "Bonne soirée", "Bonne journée", "Adieu"],
+     "responses": ["See you later", "Have a nice day", "Bye! Come back again", "Bonne journée"]
+    },
+    {"tag": "thanks",
+     "patterns": ["Thanks", "Thank you", "That's helpful", "Thanks for the help", "Merci", "Merci beaucoup", "Je te remercie", "Merci infiniment", "Tu m'as bien aidé"],
+     "responses": ["Happy to help!", "Any time!", "My pleasure", "You're most welcome!", "Avec plaisir", "Pas de problème", "Pas de souci", "Quand vous voulez"]
+    },
+    {"tag": "whoareyou",
+     "patterns": ["Who are you?", "What are you?", "Who you are?", "Qui es-tu ?", "Qu'es-tu ?", "Tu es quoi", "Qu'est ce que tu es"],
+     "responses": ["I.m Joana, your bot assistant", "I'm Joana, an Artificial Intelligent bot", "Je suis Joana, votre assistante IA"]
+    },
+    {"tag": "name",
+    "patterns": ["what is your name", "what should I call you", "whats your name?"],
+    "responses": ["You can call me Joana.", "I'm Joana!", "Just call me as Joana", "Vous pouvez m'appeler Joana", "Je m'appelle Joana", "Appelez moi Joana"]
+    },
+    {"tag": "help",
+    "patterns": ["Could you help me?", "give me a hand please", "Can you help?", "What can you do for me?", "I need a support", "I need a help", "support me please", "Peux-tu m'aider ?", "J'aurais besoin d'un coup de main", "J'ai besoin d'aide", "J'aurais besoin d'aide", "A l'aide", "aide", "Au secours"],
+    "responses": ["Tell me how can assist you", "Tell me your problem to assist you", "Yes Sure, How can I support you"]
+    },
+    {"tag": "createaccount",
+    "patterns": ["J'ai besoin de créer un compte", "Comment ouvrir un nouveau compte", "I want to create an account", "Je veux créer un compte", "can you create an account for me", "Peux-tu créer un compte pour moi", "how to open a new account", "Crée moi un compte"],
+    "responses": ["You can just easily create a new account from our web site", "Just go to our web site and follow the guidelines to create a new account", "Vous pouvez facilement créer un nouveau compte sur notre site web"]
+    },
+    {
+      "tag": "time",
+      "patterns": ["Quelle heure est-il", "Il est quelle heure", "donne moi l'heure"],
+      "responses": ["Il est l'heure de travailler", "Il est l'heure d'aller dormir"]
+    },
+    {"tag": "complaint",
+    "patterns": ["have a complaint", "I want to raise a complaint", "there is a complaint about a service", "Je suis pas content", "Je suis pas très content"],
+    "responses": ["Please provide us your complaint in order to assist you", "Please mention your complaint, we will reach you and sorry for any inconvenience caused"]
+    },
+    {
+      "tag": "speak",
+      "patterns": ["Aimerais-tu savoir parler ?", "Tu aimerais savoir parler ?", "Tu veux parler ?", "Tu peux parler ?"],
+      "responses": ["J'adorerais savoir parler", "Si je pouvais parler à haute voix cela serait parfait :')"]
+    }
+]
+}
